@@ -13,41 +13,32 @@ public class StepTest {
     @Test
     public void testLambdaStep() {
         SelenideLogger.addListener("allure", new AllureSelenide());
-
         step("Открываем главную страницу", () -> {
             open("https://github.com/");
         });
-
         step("Вводим в поле поиска 'Allure'", () -> {
-        $(".header-search-input").click();
-        $(".header-search-input").sendKeys("Allure");
-        $(".header-search-input").submit();
+            $(".header-search-input").click();
+            $(".header-search-input").sendKeys("Allure");
+            $(".header-search-input").submit();
         });
-
         step("Переход по ссылке 'allure-framework/allure-java'", () -> {
-        $(linkText("allure-framework/allure-java")).click();
+            $(linkText("allure-framework/allure-java")).click();
         });
-
         step("Кликаем по таб 'Issues'", () -> {
-        $("#issues-tab").click();
+            $("#issues-tab").click();
         });
-
         step("Проверяем наличие Issue с хэштегом 904", () -> {
-        $(withText("#904")).should(Condition.exist);
+            $(withText("#904")).should(Condition.exist);
         });
-
-        }
-
+    }
 
     @Test
-    public void AnnotatedStep () {
+    public void annotatedStep() {
         WebSteps steps = new WebSteps();
-
         steps.openMainPage();
         steps.searchForRepo();
         steps.followLink();
         steps.clickIssues();
         steps.checkHashtag();
-
     }
 }

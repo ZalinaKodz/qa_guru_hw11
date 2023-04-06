@@ -11,24 +11,20 @@ public class WebSteps {
     public void openMainPage() {
         open("https://github.com/");
     }
-
     @Step("Вводим в поле поиска 'Allure'")
     public void searchForRepo() {
         $(".header-search-input").click();
         $(".header-search-input").sendKeys("Allure");
         $(".header-search-input").submit();
     }
-
     @Step("Переход по ссылке 'allure-framework/allure-java'")
     public void followLink() {
         $(linkText("allure-framework/allure-java")).click();
     }
-
     @Step("Кликаем по таб 'Issues'")
     public void clickIssues() {
         $("#issues-tab").click();
     }
-
     @Step("Проверяем наличие Issue с хэштегом 904")
     public void checkHashtag() {
         $(withText("#904")).should(Condition.exist);
